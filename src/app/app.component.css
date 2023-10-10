@@ -1,0 +1,86 @@
+body{
+  margin-top:20px;
+  background: #fffcfc6b;
+}
+.sticky-header {
+  background-color:#023047 ;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 25px;
+  transition: background-color 0.3s ease-in-out;
+}
+.navbar-brand {
+  float:none !important;
+}
+
+.myemployees {
+  margin-top: 10rem;
+  /* padding: 20px; */
+}
+
+.sticky-header nav  {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sticky-header nav  {
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-header nav  a {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+}
+
+.topnav {
+    overflow:clip;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a.active {
+    color: white;
+  }
+  
+  .topnav-right {
+    float: right;
+  }
+
+.card {
+    border: none;
+    -webkit-box-shadow: 1px 1px 2px 0 rgba(0,0,0,.05);
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,.05);
+    margin-bottom: 5px;
+    padding: 30px;
+ }
+ .btn .btn-primary{
+  margin-top: 10px;
+
+ }
+  .w-60 {
+    width: 60px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+      margin: 0 0 10px;
+      font-weight: 600;
+  }
+
+  h5{
+    font-size: 16px;
+  }
