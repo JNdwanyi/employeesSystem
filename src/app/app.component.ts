@@ -76,6 +76,7 @@ public onDeleteEmployee(employeeid:number):void{
 }
 public searchEmployees(key: string):void{
   const results: Employee[]=[];
+  console.log(key);
   for(const employee of this.employees){
     if(employee.name.toLowerCase().indexOf(key.toLowerCase())!==-1 
     
