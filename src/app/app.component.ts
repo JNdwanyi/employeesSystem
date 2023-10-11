@@ -58,8 +58,6 @@ public onUpdateEmployee(employee:Employee):void{
       alert(error.message);
     }
   )
-
-
 }
 public onDeleteEmployee(employeeid:number):void{
   this.employeeService.deleteEmployee(employeeid).subscribe(
@@ -74,6 +72,7 @@ public onDeleteEmployee(employeeid:number):void{
     }
   )
 }
+
 public searchEmployees(key: string):void{
   const results: Employee[]=[];
   console.log(key);

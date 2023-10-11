@@ -22,15 +22,17 @@
 
 <div class="container"id="main-container">
     <div class="row">
-        <div  *ngFor="let employee of employees"class=" myemployees col-md-6 col-xl-4">
-            <div class="card m-b-30">
+     
+        <div *ngFor="let employee of employees"class=" myemployees col-md-6 col-xl-4">
+            <div class="card m-b-30 ">
+              <div class="employee">
                 <div class="card-body row">
                     <div class="col-6">
                         <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
                     </div>
                     <div class="col-6 card-title align-self-center mb-0">
-                        <h5>{{employee?.name}}</h5>
-                        <p class="m-0">{{employee?.jobTitle}}</p>
+                        <h6 class="employeeName">{{employee?.name}}</h6>
+                        <p class="m-0 jobTitle">{{employee?.jobTitle}}</p>
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -43,8 +45,10 @@
                         <a (click)="onOpenModel(employee,'delete')" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
+      
        
     </div>
 </div>
@@ -96,7 +100,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="">Edit employee</h5>
+        <h5 class="modal-title">Edit employee</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -105,7 +109,7 @@
         <form #editForm="ngForm">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text"ngModel="{{editEmployee.name}}" name="name"class="form-control"  placeholder="Name"required>
+            <input type="text"ngModel="{{editEmployee.name}}" name="name"class="form-control"placeholder="Name"required>
           </div>
          
             <input type="hidden"ngModel="{{editEmployee.id}}"id="id" name="email"class="form-control" placeholder="Name"required>
@@ -131,7 +135,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="onUpdateEmployee(editForm.value)"type="submit" id="add-employee-form" class="btn btn-primary">Save changes</button>
+        <button (click)="onUpdateEmployee(editForm.value)"type="ngSubmit" id="add-employee-form" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
