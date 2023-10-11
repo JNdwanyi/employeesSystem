@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     public  employees: Employee[]=[];
     public editEmployee!: Employee;
-    filteredEmployeesList: Employee[] = [];
+    public deleteEmployee!:Employee;
     
    
   constructor(private employeeService:EmployeeService){}
@@ -22,9 +22,7 @@ export class AppComponent implements OnInit {
     this.getEmployees();
    
     }
-   
 
-  
   public getEmployees():void {this.employeeService.getEmployees().subscribe((employees )=> {
     this.employees=employees;
 
@@ -39,6 +37,7 @@ public onAddEmployee(addForm:NgForm):void{
     (response:Employee)=>{
       console.log(response);
       this.getEmployees();
+      addForm.reset();
     },
     
     
@@ -62,6 +61,35 @@ public onUpdateEmployee(employee:Employee):void{
 
 
 }
+public onDeleteEmployee(employeeid:number):void{
+  this.employeeService.deleteEmployee(employeeid).subscribe(
+    (response:void)=>{
+      console.log(response);
+      this.getEmployees();
+    },
+    
+    
+    (error:HttpErrorResponse)=>{
+      alert(error.message);
+    }
+  )
+}
+public searchEmployees(key: string):void{
+  const results: Employee[]=[];
+  for(const employee of this.employees){
+    if(employee.name.toLowerCase().indexOf(key.toLowerCase())!==-1 
+    
+    )
+  {
+      results.push(employee);
+    }
+  }
+  this.employees = results;
+  if(results.length === 0||!key){
+    this.getEmployees();
+  }
+  
+}
 public onOpenModel(employee:Employee,mode:string): void{
   const container =  document.getElementById("main-container");
   const button = document.createElement("button");
@@ -75,13 +103,11 @@ public onOpenModel(employee:Employee,mode:string): void{
     this.editEmployee=employee;
     button.setAttribute("data-target","#updateEmployeeModel");
   }
+  if(mode==='delete'){
+    this.deleteEmployee = employee;
+    button.setAttribute("data-target","#deleteEmployeeModel");
+  }
   container?.appendChild(button);
   button.click();
 }
-
-
- 
- 
-  
-  
 }

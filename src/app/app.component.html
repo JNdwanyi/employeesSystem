@@ -10,9 +10,10 @@
       
       <div class="topnav-right">
         <form class="d-flex" role="search">
-          <input class="form-control me-2" key="name"type="search" placeholder="Search employees" #filter aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+          <input type="search"(ngModelChange)="searchEmployees(key.value)"
+          ngModel 
+           name="key"id="searchName"class="form-control mr-sm-2"placeholder="search employee..."#key required>
+          </form>
       </div>
     </div>
   </div>
@@ -104,27 +105,27 @@
         <form #editForm="ngForm">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text"ngModel="{{editEmployee?.name}}" name="name"class="form-control"  placeholder="Name"required>
+            <input type="text"ngModel="{{editEmployee.name}}" name="name"class="form-control"  placeholder="Name"required>
           </div>
          
-            <input type="hidden"ngModel="{{editEmployee?.id}}"id="id" name="email"class="form-control" placeholder="Name"required>
-            <input type="hidden"ngModel="{{editEmployee?.employeeCode}}"id="employeeCode" name="usercode"class="form-control" placeholder="Name"required>
+            <input type="hidden"ngModel="{{editEmployee.id}}"id="id" name="email"class="form-control" placeholder="Name"required>
+            <input type="hidden"ngModel="{{editEmployee.employeeCode}}"id="employeeCode" name="usercode"class="form-control" placeholder="Name"required>
 
           <div class="form-group">
             <label for="email">Email Adress</label>
-            <input type="email"ngModel="{{editEmployee?.email}}" name="email"class="form-control" id="email"placeholder="Name"required>
+            <input type="email"ngModel="{{editEmployee.email}}" name="email"class="form-control" id="email"placeholder="Name"required>
           </div>
           <div class="form-group">
             <label for="email" >job Title</label>
-            <input type="text"ngModel="{{editEmployee?.jobTitle}}"name="job title"class="form-control" id="jobTitle"placeholder="job title"required>
+            <input type="text"ngModel="{{editEmployee.jobTitle}}"name="job title"class="form-control" id="jobTitle"placeholder="job title"required>
           </div>
           <div class="form-group">
             <label for="phone" >phone</label>
-            <input type="text"ngModel="{{editEmployee?.phone}}" name="phone"class="form-control" id="phone"placeholder="phone"required>
+            <input type="text"ngModel="{{editEmployee.phone}}" name="phone"class="form-control" id="phone"placeholder="phone"required>
           </div>
           <div class="form-group">
             <label for="imageUrl">Image url</label>
-            <input type="text"ngModel="{{editEmployee?.imageUrl}}" name="imageUrl"class="form-control" id="imageUrl"placeholder="imageUrl"required>
+            <input type="text"ngModel="{{editEmployee.imageUrl}}" name="imageUrl"class="form-control" id="imageUrl"placeholder="img"required>
           </div>
         </form>
       </div>
@@ -148,11 +149,11 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Do you really want to delete these records? This process cannot be undone.</p>
+          <p>Do you really want to delete {{deleteEmployee.name}}? This process cannot be undone.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button (click)="onDeleteEmployee(deleteEmployee.id)" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>
@@ -160,7 +161,7 @@
 </div>
 
 <!-- notfication -->
-<div class="col-lg-12 col-md-12 col-xl-12">
+<div *ngIf="employees?.length==0" class="col-lg-12 col-md-12 col-xl-12">
   <div class="alert alert info"role="alert">
     <h4 class="alert-heading">NO EMPLOYEES!</h4>
     <p>no employee found</p>
