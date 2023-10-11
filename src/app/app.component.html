@@ -10,7 +10,7 @@
       
       <div class="topnav-right">
         <form class="d-flex" role="search">
-          <input class="form-control me-2" key="name"type="search" placeholder="Search employees" aria-label="Search">
+          <input class="form-control me-2" key="name"type="search" placeholder="Search employees" #filter aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
@@ -70,7 +70,7 @@
           </div>
           <div class="form-group">
             <label for="email" >Job Title</label>
-            <input type="text"name="job title"class="form-control" id="job title"placeholder="job title"required>
+            <input type="text"name="job title"class="form-control" id="jobtitle"placeholder="job title"required>
           </div>
           <div class="form-group">
             <label for="phone" >Phone</label>
@@ -101,32 +101,36 @@
         </button>
         </div>
       <div class="modal-body">
-        <form>
+        <form #editForm="ngForm">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" name="name"class="form-control" id="name" placeholder="Name"required>
+            <input type="text"ngModel="{{editEmployee?.name}}" name="name"class="form-control"  placeholder="Name"required>
           </div>
+         
+            <input type="hidden"ngModel="{{editEmployee?.id}}"id="id" name="email"class="form-control" placeholder="Name"required>
+            <input type="hidden"ngModel="{{editEmployee?.employeeCode}}"id="employeeCode" name="usercode"class="form-control" placeholder="Name"required>
+
           <div class="form-group">
-            <label for="email" >Email Adress</label>
-            <input type="email"name="email"class="form-control" id="email"placeholder="Name"required>
+            <label for="email">Email Adress</label>
+            <input type="email"ngModel="{{editEmployee?.email}}" name="email"class="form-control" id="email"placeholder="Name"required>
           </div>
           <div class="form-group">
             <label for="email" >job Title</label>
-            <input type="text"name="job title"class="form-control" id="job title"placeholder="job title"required>
+            <input type="text"ngModel="{{editEmployee?.jobTitle}}"name="job title"class="form-control" id="jobTitle"placeholder="job title"required>
           </div>
           <div class="form-group">
             <label for="phone" >phone</label>
-            <input type="text"name="phone"class="form-control" id="phone"placeholder="phone"required>
+            <input type="text"ngModel="{{editEmployee?.phone}}" name="phone"class="form-control" id="phone"placeholder="phone"required>
           </div>
           <div class="form-group">
             <label for="imageUrl">Image url</label>
-            <input type="text"name="imageUrl"class="form-control" id="imageUrl"placeholder="imageUrl"required>
+            <input type="text"ngModel="{{editEmployee?.imageUrl}}" name="imageUrl"class="form-control" id="imageUrl"placeholder="imageUrl"required>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button [disabled]="addForm.invalid" id="add-employee-form" class="btn btn-primary">Save changes</button>
+        <button (click)="onUpdateEmployee(editForm.value)"type="submit" id="add-employee-form" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -141,7 +145,7 @@
             <i class="material-icons">&#xE5CD;</i>
           </div>				
           <h4 class="modal-title">Are you sure?</h4>	
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
           <p>Do you really want to delete these records? This process cannot be undone.</p>

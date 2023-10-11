@@ -12,12 +12,17 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
     title="Employee management";
 
-    employees: Employee[]=[];
+    public  employees: Employee[]=[];
+    public editEmployee!: Employee;
+    filteredEmployeesList: Employee[] = [];
+    
    
   constructor(private employeeService:EmployeeService){}
     ngOnInit(): void {
     this.getEmployees();
+   
     }
+   
 
   
   public getEmployees():void {this.employeeService.getEmployees().subscribe((employees )=> {
@@ -41,6 +46,19 @@ public onAddEmployee(addForm:NgForm):void{
       alert(error.message);
     }
   )
+}
+public onUpdateEmployee(employee:Employee):void{
+  this.employeeService.updateEmployee(employee).subscribe(
+    (response:Employee)=>{
+      console.log(response);
+      this.getEmployees();
+    },
+    
+    
+    (error:HttpErrorResponse)=>{
+      alert(error.message);
+    }
+  )
 
 
 }
@@ -53,18 +71,17 @@ public onOpenModel(employee:Employee,mode:string): void{
   if(mode==='add'){
     button.setAttribute("data-target","#addEmployeeModel");
   }
-
   if(mode==='edit'){
+    this.editEmployee=employee;
     button.setAttribute("data-target","#updateEmployeeModel");
-
-  }
-  if(mode==='delete'){
-    button.setAttribute("data-target","#deleteEmployeeModel");
-
   }
   container?.appendChild(button);
   button.click();
 }
+
+
+ 
+ 
   
   
 }
