@@ -1,20 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white;">Employee Manager</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor02">
-     <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-           <a class="nav-link" (click)="onOpenModal(null!, 'add')">Add Employee <span class="sr-only">(current)</span></a>
-        </li>
-     </ul>
-     <form class="form-inline my-2 my-lg-0">
-        <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
-         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
-     </form>
+<header class="sticky-header container-fluid">
+  <div class="container"id="mainheader">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" style="color:rgb(255, 255, 255);">Employee Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" (click)="onOpenModal(null!,'add')">Add Employee <span class="sr-only"></span></a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+              <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+              name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
+          </form>
+        </div>
+      </nav>
   </div>
-</nav>
+</header>
 
 <div class="container">
   <div class="row align-items-center">
@@ -88,12 +92,7 @@
                               <td>125</td>
                               <td>
                                   <ul class="list-inline mb-0">
-                                      <li class="list-inline-item">
-                                          <a (click)="onOpenModal(employee, 'edit')" href="" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a href="" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
-                                      </li>
+                                      
                                       <div class="float-right btn-group btn-group-sm">
                                         <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
                                         <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>

@@ -10,6 +10,18 @@
   transition: background-color 0.3s ease-in-out;
 }
 
+.sticky-header {
+  background-color:#023047 ;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
 .navbar-brand {
   float:none !important;
 }
@@ -27,6 +39,46 @@
   margin-top: 20px;
 
 }
+
+.sticky-header nav  {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sticky-header nav  {
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-header nav  C {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+}
+.navbar-brand {
+  float:none !important;
+}
+a ,i{
+  cursor: pointer;
+  color: #fff;
+
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+.navbar{
+  background: #003249;
+}
+
+.list-group-flush {
+  font-size: 12px;
+}
+
+
 
 .sticky-header nav  {
   list-style: none;
