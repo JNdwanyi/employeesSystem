@@ -1,14 +1,14 @@
 <header class="sticky-header container-fluid">
   <div class="container"id="mainheader">
       <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" style="color:rgb(255, 255, 255);">Employee Manager</a>
+        <a class="navbar-brand" style="color:rgb(255, 255, 255);">Personeelsbeheer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" (click)="onOpenModal(null!,'add')">Add Employee <span class="sr-only"></span></a>
+                <a class="nav-link" (click)="onOpenModal(null!,'add')">Medewerker toevoegen <span class="sr-only"></span></a>
               </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -24,7 +24,7 @@
   <div class="row align-items-center">
       <div class="col-md-6">
           <div class="mb-3">
-              <h5 class="card-title">Contact List <span class="text-muted fw-normal ms-2">(834)</span></h5>
+              <h5 class="card-title">Werknemerslijst <span class="text-muted fw-normal ms-2">(834)</span></h5>
           </div>
       </div>
       <div class="col-md-6">
@@ -53,14 +53,7 @@
               <div>
                   <a href="#" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
               </div>
-              <div class="dropdown">
-                  <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-dots-horizontal-rounded"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-              </div>
+ 
           </div>
       </div>
   </div>
@@ -74,11 +67,11 @@
                               <th scope="col" class="ps-4" style="width: 50px;">
                                   <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
                               </th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Position</th>
-                              <th scope="col">Email</th>
-                              <th scope="col">Projects</th>
-                              <th scope="col" style="width: 200px;">Action</th>
+                              <th scope="col">Naam</th>
+                              <th scope="col">Positie</th>
+                              <th scope="col">E-mail</th>
+                              <th scope="col">Telefoon</th>
+                              <th scope="col" style="width: 200px;">Actie</th>
                           </tr>
                       </thead>
                       <tbody *ngFor="let employee of employees">
@@ -89,7 +82,7 @@
                               <td><img src="{{employee.imageUrl}}" alt="" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body">{{employee.name}}</a></td>
                               <td><span class="badge badge-soft-success mb-0">{{employee.jobTitle}}</span></td>
                               <td>{{employee.email}}</td>
-                              <td>125</td>
+                              <td>{{employee.phone}}</td>
                               <td>
                                   <ul class="list-inline mb-0">
                                       
@@ -97,12 +90,7 @@
                                         <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
                                         <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                                      </div>
-                                      <li class="list-inline-item dropdown">
-                                          <a class="text-muted dropdown-toggle font-size-18 px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-vertical-rounded"></i></a>
-                                          <div class="dropdown-menu dropdown-menu-end">
-                                              <a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
-                                          </div>
-                                      </li>
+                                     
                                   </ul>
                               </td>
                           </tr>
@@ -141,12 +129,7 @@
            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{employee?.email}}</li>
            <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{employee?.phone}}</li>
         </ul>
-        <div class="card-body">
-           <div class="float-right btn-group btn-group-sm">
-              <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
-           </div>
-        </div>
+        
      </div>
   </div>
 </div>
@@ -277,7 +260,7 @@
         <div class="modal-body">
            <p>Are you sure you want to delete employee {{deleteEmployee?.name}}?</p>
            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Nee</button>
               <button (click)="onDeleteEmloyee(deleteEmployee.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
            </div>
         </div>
