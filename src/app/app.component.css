@@ -233,3 +233,8 @@ a ,i{
     .bg-soft-primary {
         background-color: rgba(59,118,225,.25)!important;
     }
+
+    .table-responsive {
+      padding: 6rem;
+
+    }
