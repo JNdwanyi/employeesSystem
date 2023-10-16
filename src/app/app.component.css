@@ -59,7 +59,10 @@
   margin: 0;
   padding: 0;
 }
+.deleteEmployee {
+  color:rgb(255, 0, 0);
 
+}
 .navbar-brand {
   float:none !important;
 }
