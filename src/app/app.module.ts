@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EmployeeService } from './employee.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,

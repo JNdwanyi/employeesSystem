@@ -4,22 +4,35 @@ import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+[x: string]: any;
   public employees: Employee[]=[];
   public editEmployee!: Employee;
   public deleteEmployee!: Employee;
+  totalEmployees: number = 0;
+  pageSize = 3; 
+  currentPage = 1;
 
+ 
   constructor(private employeeService: EmployeeService){}
 
   ngOnInit() {
     this.getEmployees();
+    this.totalEmployees = this.employees.length; 
+    this.employeeService.getEmployees().subscribe((data: any) => {
+      this.employees = data;
+      this.totalEmployees = this.employees.length; // Update the total employee count
+    });
+   
+  
   }
-
+  
   public getEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       (response: Employee[]) => {
@@ -75,8 +88,7 @@ export class AppComponent implements OnInit {
     console.log(key);
     const results: Employee[] = [];
     for (const employee of this.employees) {
-      if (employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      if (employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(employee);
       }
     }
@@ -107,6 +119,5 @@ export class AppComponent implements OnInit {
     button.click();
   }
 
-
-
 }
+
