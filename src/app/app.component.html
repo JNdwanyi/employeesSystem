@@ -2,11 +2,9 @@
   <div class="container"id="mainheader">
       <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" style="color:rgb(255, 255, 255);">Medewerkersbeheer</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <ul class="navbar-nav ">
-          <li class="nav-item active">
+        
+        <ul class="navbar-nav d-flex align-items-start">
+          <li class="nav-item">
             <a class="nav-link" (click)="onOpenModal(null!,'add')">Medewerker toevoegen <span class="sr-only"></span></a>
           </li>
         </ul>
@@ -65,12 +63,17 @@
                                  <td><span class="badge badge-soft-success mb-0">{{employee.jobTitle}}</span></td>
                                  <td>{{employee.email}}</td>
                                  <td>{{employee.phone}}</td>
+                                 
                                  <td>
                                     <ul class="list-inline mb-0">
                                        
                                        <div class="float-right btn-group btn-group-sm">
-                                          <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                                          <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                          <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i title="Bewerking"class="fa fa-pencil"></i> </a>
+                                          <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i title="Verwijderen"class="fa fa-times"></i></a>
+                                          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                             Button with data-bs-target
+                                           </button>
+
                                        </div>
                                        
                                     </ul>
@@ -84,7 +87,7 @@
                            <ul class="pagination d-flex justify-content-end">
                               
                                  <li [class.disabled]="currentPage === 1" class="page-item">
-                                    <a (click)="currentPage = currentPage =1" class="page-link">&laquo; Previous</a>
+                                    <a (click)="currentPage = currentPage =1" class="page-link">&laquo; Volg</a>
                                  </li>
                            
                               <li class="page-item">
@@ -92,7 +95,7 @@
                               </li>
 
                               <li [class.disabled]="currentPage === employees.length / pageSize" class="page-item">
-                                 <a (click)="currentPage = currentPage + 1 " class="page-link">Next &raquo;</a>
+                                 <a (click)="currentPage = currentPage + 1 " class="page-link">Volgende &raquo;</a>
                               </li>
                            </ul>
                         </div>
@@ -105,7 +108,6 @@
 </div>
 
 </div>
-                          
 
 <!-- Add Employee Modal -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
@@ -140,7 +142,7 @@
              <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="afbeelding URL" required>
           </div>
           <div class="modal-footer">
-             <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Wijzigingen opslaan
             </button>
           </div>
@@ -185,7 +187,7 @@
                  <input type="text" ngModel="{{editEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="Afbeelding URL" placeholder="Image URL">
               </div>
               <div class="modal-footer">
-                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Annuleren</button>
                  <button (click)="onUpdateEmloyee(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Wijzigingen opslaan
                </button>
               </div>
@@ -206,11 +208,11 @@
            </button>
         </div>
         <div class="modal-body">
-           <p>Weet u zeker dat u<span class="deleteEmployee">{{deleteEmployee?.name}}</span>  wilt verwijderen?
+           <p>Weet u zeker dat u<span class="deleteEmployee">{{deleteEmployee?.name}}</span> wilt verwijderen?
            </p>
            <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Nee</button>
-              <button (click)="onDeleteEmloyee(deleteEmployee.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+              <button (click)="onDeleteEmloyee(deleteEmployee.id)" class="btn btn-danger" data-dismiss="modal">Ja</button>
            </div>
         </div>
      </div>
@@ -220,8 +222,8 @@
  <!-- Notification for no employees -->
  <div *ngIf="employees?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
    <div class="alert alert-info" role="alert">
-   <h4 class="alert-heading">NO EMPLOYEES!</h4>
-   <p>No Employees were found.</p>
+   <h4 class="alert-heading">GEEN WERKNEMERS!</h4>
+   <p>Er zijn geen medewerkers gevonden.</p>
    </div>
 </div>
 <router-outlet></router-outlet>

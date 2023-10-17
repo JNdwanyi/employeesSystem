@@ -31,8 +31,8 @@
 }
 .tablenav {
   margin-top: 10rem;
-  margin-left: 2rem;
-  margin-right:2rem;
+  margin-left: 5rem;
+  margin-right:5rem;
 
 }
 .list-group-flush {
@@ -92,11 +92,9 @@ a,i {
   background:#0d6efd !important;
 
 }
-
-  
-  .topnav-right {
-    float: right;
-  }
+.topnav-right {
+  float: right;
+}
 
 .card {
   min-height:170px;
@@ -110,12 +108,13 @@ a,i {
   font-family: 'Oswald', sans-serif;
   box-shadow: 0 0 10px rgba(216, 215, 215, 0.27);
  }
- .jobTitle {
+
+.jobTitle {
   font-size: 8px;
   border-bottom:1px solid rgb(202, 4, 113);
+}
 
- }
- .employeeName {
+.employeeName {
   font-size: 10px;
 
  }
@@ -131,14 +130,14 @@ a,i {
       font-weight: 600;
   }
 
-  h5{
+  h5 {
     font-size: 16px;
   }
 
-    .project-list-table {
+  .project-list-table {
         border-collapse: separate;
         border-spacing: 0 12px
-    }
+  }
     
     .project-list-table tr {
         background-color: #fff
@@ -171,10 +170,7 @@ a,i {
         vertical-align: middle;
     }
    
-    .badge-soft-danger {
-        color: #f56e6e !important;
-        background-color: rgba(245,110,110,.1);
-    }
+
     .badge-soft-success {
         color: #63ad6f !important;
         background-color: rgba(99,173,111,.1);
@@ -183,11 +179,6 @@ a,i {
     .badge-soft-primary {
         color: #3b76e1 !important;
         background-color: rgba(59,118,225,.1);
-    }
-    
-    .badge-soft-info {
-        color: #57c9eb !important;
-        background-color: rgba(87,201,235,.1);
     }
     
     .avatar-title {
@@ -206,5 +197,19 @@ a,i {
 
     .table-responsive {
       padding: 2rem;
+      padding-left:5rem;
+      padding-right: 5rem;
 
     }
+  @media (max-width: 768px) {  
+      .table-responsive[_ngcontent-ng-c2144732758] {
+        padding: 1rem;
+        padding-left: 0rem !important;
+        padding-right: 0rem !important;
+      }
+      .tablenav[_ngcontent-ng-c2144732758]{
+      
+        margin-left: 0rem !important;
+        margin-right: 0 !important;
+    }
+  }
