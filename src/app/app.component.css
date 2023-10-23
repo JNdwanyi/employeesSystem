@@ -1,24 +1,19 @@
-.sticky-header {
-  background-color:#023047 ;
-  color: #fff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 5px;
-  transition: background-color 0.3s ease-in-out;
+
+.disable{
+  cursor: not-allowed;
+  pointer-events: none;
+ 
 }
 
 .sticky-header {
-  background-color:#023047 ;
+  background-color:#154273;
   color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 5px;
+  padding: 20px;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -27,14 +22,10 @@
 }
 
 #main-container {
-  background:#fbfbfbde;
-}
-.tablenav {
-  margin-top: 10rem;
-  margin-left: 5rem;
-  margin-right:5rem;
+  background: #f3f3f3de;
 
 }
+
 .list-group-flush {
   font-size: 12px;
 }
@@ -95,29 +86,6 @@ a,i {
 .topnav-right {
   float: right;
 }
-
-.card {
-  min-height:170px;
-  margin: 0;
-  padding: 1.7rem 1.2rem;
-  border: none;
-  border-radius: 4px;
-  border-radius: 0;
-  color:rgba(0,0,0,1);
-  letter-spacing: .05rem;
-  font-family: 'Oswald', sans-serif;
-  box-shadow: 0 0 10px rgba(216, 215, 215, 0.27);
- }
-
-.jobTitle {
-  font-size: 8px;
-  border-bottom:1px solid rgb(202, 4, 113);
-}
-
-.employeeName {
-  font-size: 10px;
-
- }
  .btn .btn-primary{
   margin-top: 10px;
 
@@ -199,17 +167,37 @@ a,i {
       padding: 2rem;
       padding-left:5rem;
       padding-right: 5rem;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 5px;
+      background: rgb(255, 255, 255);
+      margin-top: 10rem;
+    }
+    .nav-link {
+      position: relative;
+      right: 10rem;
 
     }
   @media (max-width: 768px) {  
-      .table-responsive[_ngcontent-ng-c2144732758] {
+      .table-responsive {
         padding: 1rem;
         padding-left: 0rem !important;
         padding-right: 0rem !important;
       }
-      .tablenav[_ngcontent-ng-c2144732758]{
+      .tablenav{
       
-        margin-left: 0rem !important;
-        margin-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 2rem !important;
     }
+    .sticky-header {
+      padding: 10px;
+    }
+    
+
   }
+  @media (max-width: 992px){
+    .nav-link {
+      right: 0;
+
+    }
+
+  }
+  

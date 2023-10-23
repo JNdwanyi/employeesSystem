@@ -119,5 +119,15 @@ export class AppComponent implements OnInit {
     button.click();
   }
 
+  public nextPage(){
+   if( this.currentPage <=this.employees.length / this.pageSize){
+        this.currentPage++;
+
+
+   }
+  }
+
+
+
 }
 

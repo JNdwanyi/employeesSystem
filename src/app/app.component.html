@@ -8,10 +8,10 @@
             <a class="nav-link" (click)="onOpenModal(null!,'add')">Medewerker toevoegen <span class="sr-only"></span></a>
           </li>
         </ul>
-        <div class="" id="navbarColor02">
+        <div id="navbarColor02">
           <form class="topnav-right ">
               <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
-              name="key" id="searchName" class="form-control mr-sm-2" placeholder="Zoek medewerkers..." required>
+              name="key" id="searchName" class="form-control mr-sm-2" placeholder="Filter op Naam..." required>
           </form>
         </div>
       </nav>
@@ -19,32 +19,32 @@
 </header>
 <div class="container-fluid">
    <div class="container"id="main-container">
-      <div class="row align-items-center tablenav" >
-         <div class="col-md-6">
-            <div class="mb-3">
-                 <h5 class="card-title">Totaal medewerkers:<span class="text-muted fw-normal ms-2">{{totalEmployees}}</span></h5>
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3 ">
-               <div>
-                   <ul class="nav nav-pills">
-                        
-                           <li class="nav-item">
-                              <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Grid" aria-label="Grid"><i class="bx bx-grid-alt"></i></a>
-                           </li>
-                        </ul>
-                  </div>
-                  <div>
-                     <a class="btn btn-primary"(click)="onOpenModal(null!,'add')">Medewerker toevoegen <i class="bx bx-plus me-1"></i></a>
-                  </div>
-               </div>
-            </div>
-      </div>
+     
       <div class="row">
          <div class="col-lg-12">
             <div class="">
                <div class="table-responsive">
+                  <div class="row align-items-center tablenav" >
+                     <div class="col-md-6">
+                        <div class="mb-3">
+                             <h5 class="card-title">Totaal medewerkers:<span class="text-muted fw-normal ms-2">{{totalEmployees}}</span></h5>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3 ">
+                           <div>
+                               <ul class="nav nav-pills">
+                                    
+                                       <li class="nav-item">
+                                          <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Grid" aria-label="Grid"><i class="bx bx-grid-alt"></i></a>
+                                       </li>
+                                    </ul>
+                              </div>
+                              <div>
+                                 <a class="btn btn-primary"(click)="onOpenModal(null!,'add')">Medewerker toevoegen <i class="bx bx-plus me-1"></i></a>
+                              </div>
+                           </div>
+                        </div>
                      <table class="table project-list-table table-nowrap align-middle table-borderless">
                         <thead>
                            <tr>
@@ -56,6 +56,13 @@
                                  <th scope="col" style="width: 200px;">Actie</th>
                            </tr>
                         </thead>
+                        <!-- Notification for no employees -->
+                        <div *ngIf="employees?.length == 0" >
+                           <!-- <div class="alert alert-info" role="alert"> -->
+                           <h4 class="alert-heading">GEEN WERKNEMERS!</h4>
+                           <p>Er zijn geen medewerkers gevonden.</p>
+                           <!-- </div> -->
+                        </div>
                         <tbody *ngFor="let employee of employees | slice:(currentPage - 1) * pageSize:currentPage * pageSize">
                            <tr>
                                 
@@ -69,11 +76,7 @@
                                        
                                        <div class="float-right btn-group btn-group-sm">
                                           <a (click)="onOpenModal(employee, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i title="Bewerking"class="fa fa-pencil"></i> </a>
-                                          <a (click)="onOpenModal(employee, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i title="Verwijderen"class="fa fa-times"></i></a>
-                                          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                             Button with data-bs-target
-                                           </button>
-
+                                          <a (click)="onOpenModal(employee, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i title="Verwijderen"class="fa fa-times"></i></a>
                                        </div>
                                        
                                     </ul>
@@ -87,15 +90,15 @@
                            <ul class="pagination d-flex justify-content-end">
                               
                                  <li [class.disabled]="currentPage === 1" class="page-item">
-                                    <a (click)="currentPage = currentPage =1" class="page-link">&laquo; Volg</a>
+                                    <a (click)="currentPage = currentPage =1" class="page-link">&laquo; Volge</a>
                                  </li>
                            
                               <li class="page-item">
                                  <a class="page-link">{{ currentPage }}</a>
                               </li>
 
-                              <li [class.disabled]="currentPage === employees.length / pageSize" class="page-item">
-                                 <a (click)="currentPage = currentPage + 1 " class="page-link">Volgende &raquo;</a>
+                              <li  class="page-item">
+                                 <a (click)="nextPage()" class="page-link">Volgende &raquo;</a>
                               </li>
                            </ul>
                         </div>
@@ -115,8 +118,7 @@
     <div class="modal-content">
        <div class="modal-header">
           <h5 class="modal-title" id="addEmployeeModalLabel">Werknemer toevoegen</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
           </button>
        </div>
        <div class="modal-body">
@@ -157,9 +159,8 @@
   <div class="modal-dialog" role="document">
      <div class="modal-content">
         <div class="modal-header">
-           <h5 class="modal-title" id="updateEmployeeModalLabel">Werknemer bewerken {{editEmployee?.name}}</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
+           <h5 class="modal-title" id="updateEmployeeModalLabel">Werknemer bewerken: {{editEmployee?.name}}</h5>
+           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
            </button>
         </div>
         <div class="modal-body">
@@ -203,12 +204,11 @@
      <div class="modal-content">
         <div class="modal-header">
            <h5 class="modal-title" id="deleteModelLabel">Werknemer verwijderen</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
+           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
            </button>
         </div>
         <div class="modal-body">
-           <p>Weet u zeker dat u<span class="deleteEmployee">{{deleteEmployee?.name}}</span> wilt verwijderen?
+           <p>Weet u zeker dat u <span class="deleteEmployee">{{deleteEmployee?.name}}</span> wilt verwijderen?
            </p>
            <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Nee</button>
@@ -219,11 +219,5 @@
   </div>
 </div>
 </div>
- <!-- Notification for no employees -->
- <div *ngIf="employees?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
-   <div class="alert alert-info" role="alert">
-   <h4 class="alert-heading">GEEN WERKNEMERS!</h4>
-   <p>Er zijn geen medewerkers gevonden.</p>
-   </div>
-</div>
+ 
 <router-outlet></router-outlet>
